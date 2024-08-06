@@ -1,0 +1,1 @@
+Proyecto realizado para la asignatura de Desarrollo y Gestión de Sistemas de Información en la Nube, la cual consta de un apartado de Front y otro de Backend, cada uno con sus respectivos readme explicativos
