@@ -1,0 +1,167 @@
+
+
+
+<body>
+  <!-- Title -->
+
+
+
+  
+  <div class="container">
+    <h1>Champions list</h1>
+  </div>
+  
+
+
+
+
+
+  <div>&nbsp;</div>
+
+  <!-- Alerts show -->
+  <!-- <div *ngIf="isAlert" class="alert alert-success" role="alert"> -->
+    <div *ngIf="isAlert" [class]="alertClass" role="alert">
+
+    {{alertMessage}}
+  </div>
+
+
+  <!-- Add champion -->
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th style="font-weight: bold;">Name</th>
+        <th style="font-weight: bold;">Role</th>
+        <th style="font-weight: bold;">Class</th>
+        <th style="font-weight: bold;">Actions</th>
+      </tr>
+    </thead>
+    
+
+
+    <tbody>
+
+  <tr>
+    <td><input id="new-champ-name"placeholder="Place here the champion's name" class="form-control" #newChampName /></td>
+
+    <!-- <td><input id="new-champ-role" class="form-control" #newChampRole /></td> -->
+    <td>
+      <select id="new-champ-role" class="form-control" #newChampRole>
+        <option value="TOP">TOP</option>
+        <option value="MID">MID</option>
+        <option value="ADC">ADC</option>
+        <option value="SUPPORT">SUPPORT</option>
+        <option value="JUNGLE">JUNGLE</option>
+      </select>
+    </td>
+    <!-- <td><input id="new-champ-class" class="form-control" #newChampClass /></td> -->
+    <td>
+      <select id="new-champ-class" class="form-control" #newChampClass>
+        <option value="Fighter">Fighter</option>
+        <option value="Assassin">Assassin</option>
+        <option value="Mage">Mage</option>
+        <option value="Marksman">Marksman</option>
+        <option value="Support">Support</option>
+        <option value="Tank">Tank</option>
+      </select>
+    </td>
+
+
+    <td style="display: none;"><input id="new-champ-tier" class="form-control" #newChampTier type="hidden"/></td>
+    <td style="display: none;"><input id="new-champ-score" class="form-control" #newChampScore type="number" type="hidden"/></td>
+    <td style="display: none;"><input id="new-champ-trend" class="form-control" #newChampTrend type="number" type="hidden"/></td>
+    <td style="display: none;"><input id="new-champ-winP" class="form-control" #newChampWinP type="hidden"/></td>
+    <td style="display: none;"><input id="new-champ-roleP" class="form-control" #newChampRoleP type="hidden"/></td>
+    <td style="display: none;"><input id="new-champ-pickP" class="form-control" #newChampPickP type="hidden"/></td>
+    <td style="display: none;"><input id="new-champ-banP" class="form-control" #newChampBanP type="hidden"/></td>
+    <td style="display: none;"><input id="new-champ-kda" class="form-control" #newChampKDA type="hidden"/></td>
+
+
+    <td>
+
+      <button class="btn btn-success"
+      (click)="addChamp(newChampName.value, newChampClass.value,newChampRole.value, newChampTier.value, 
+      newChampScore.valueAsNumber, newChampTrend.valueAsNumber, newChampWinP.valueAsNumber, newChampRoleP.valueAsNumber,
+       newChampPickP.valueAsNumber, newChampBanP.valueAsNumber, newChampKDA.valueAsNumber);
+
+      newChampName.value = newChampRole.value  = newChampClass.value = newChampTier.value = newChampScore.value = newChampTrend.value = newChampWinP.value = newChampRoleP.value = newChampPickP.value = newChampBanP.value = newChampKDA.value = ''">
+      Add
+    </button>
+    </td>
+</tr>
+
+    </tbody>
+  </table>
+
+<!-- Display list of champions -->
+<table class="table">
+    <thead>
+      <tr>
+        <th style="font-weight: bold;">Name</th>
+        <th style="font-weight: bold;">Role</th>
+        <th style="font-weight: bold;">Class</th>
+        <th style="font-weight: bold;">Actions</th>
+      </tr>
+    </thead>
+  
+  <tbody>
+    <tr>
+
+      
+    <!-- <tr *ngFor="let champ of champs"> -->
+    <!-- <tr *ngFor="let champ of champs | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize"> -->
+    <tr *ngFor="let champ of sortedChamps | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+
+      <td><a routerLink="/champs/{{champ.Name}}/{{champ.Role}}">{{champ.Name}}</a></td>
+      <td>{{champ.Role}}</td>
+      <td>{{champ.Class}}</td>
+      <td><button class="btn btn-danger" (click)="deleteChamp(champ.Name,champ.Role)">Delete</button></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<ngb-pagination class="d-flex justify-content-center" [(page)]="page" [pageSize]="pageSize" [collectionSize]="champs.length"></ngb-pagination>
+
+
+
+<!-- Delete all -->
+<div style="text-align: center;">
+  <button class="btn btn-secondary" style="padding: 10px 20px; font-size: 20px;" (click)="open(mymodal)">Delete all</button>
+</div>
+
+
+
+<div>&nbsp;</div>
+
+
+
+<div style="text-align: center;">
+  <button type="button" class="btn btn-info" style="padding: 10px 20px; font-size: 20px;" [routerLink]="'/champs/charts'">Integrations(Champs info)</button>
+</div>
+
+
+
+
+<!-- Modal -->
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Are you sure to delete the champions?</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">x</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    This action will remove all the champions from de database.
+  </div>
+  <div class="modal-footer">
+    <!-- <button class="btn btn-danger"  (click)="deleteChamps() ">Delete all</button> -->
+    <button class="btn btn-danger" (click)="deleteChamps(); modal.close('Delete click')">Delete all</button>
+
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Return</button>
+  </div>
+</ng-template>
+
+
+</body>

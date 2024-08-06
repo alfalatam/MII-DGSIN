@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DGSIN-2223-05</title>
+    <style>
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #555;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <h1>DGSIN-2223-05</h1>
+    <h2>Equipo</h2>
+    <ul>
+        <li>Alfonso Alarcón Tamayo</li>
+    </ul>
+
+    <h2>Descripción del proyecto</h2>
+    <p>
+        Este proyecto tiene como objetivo recabar información de una base de datos de campeones del videojuego League of Legends. La idea es poder gestionar los campeones del juego y poder acceder a estadísticas de estos. También se han realizado integraciones con otras APIs externas para obtener información personalizada y ayudar a nuevos jugadores a decidirse a usar un campeón nuevo.
+    </p>
+
+    <h2>Repositorio</h2>
+    <p>
+        El repositorio de este proyecto se encuentra en:
+        <a href="https://github.com/mii-dgsin/dgsin-2223-05">https://github.com/mii-dgsin/dgsin-2223-05</a>
+    </p>
+
+    <h2>URL del proyecto</h2>
+    <p>
+        El proyecto está desplegado en la siguiente URL:
+        <a href="https://dgsin-2223-05.ew.r.appspot.com/">https://dgsin-2223-05.ew.r.appspot.com/</a>
+    </p>
+
+    <h2>APIs</h2>
+    <p>- API Estadísticas campeones del league of legends (<a href="https://dgsin-2223-05.ew.r.appspot.com/api/v1/champs">https://dgsin-2223-05.ew.r.appspot.com/api/v1/champs</a>): Esta API contiene todas las llamadas al backend generado por Alfonso Alarcón Tamayo.
+    </p>
+
+
+
+
+    <ul>
+        <li>API Estadísticas campeones del League of Legends:</li> 
+        <a href="https://dgsin-2223-05.ew.r.appspot.com/api/v1/champs"></a>
+    </ul>
+
+    <h2>Alfonso Alarcón Tamayo - Ejemplo de la Fuente de Datos</h2>
+
+    <p><b> Datos:</b> league-of-legends-stats-s13
+        <br>Fuente de información: <a href="https://www.kaggle.com/datasets/vivovinco/league-of-legends-stats-s13">https://www.kaggle.com/datasets/vivovinco/league-of-legends-stats-s13 </a> </p>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Role</th>
+                <th>Tier</th>
+                <th>Score</th>
+                <th>Trend</th>
+                <th>WinP</th>
+                <th>RoleP</th>
+                <th>PickP</th>
+                <th>BanP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Elise</td>
+                <td>Mage</td>
+                <td>MID</td>
+                <td>S</td>
+                <td>9.21</td>
+                <td>0.5</td>
+                <td>63.22</td>
+                <td>88.04</td>
+                <td>12.60</td>
+                <td>12.50</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Integraciones</h2>
+    <ul>
+        <li>API externa: <a href="https://ddragon.leagueoflegends.com/cdn/13.12.1/data/en_US/champion.json">https://ddragon.leagueoflegends.com/cdn/13.12.1/data/en_US/champion.json</a></li>
+        <li>API externa via proxy: <a href="https://api.pandascore.co/lol/items?token=1kh6pyhk3I2w4ulvwCHu3Bnvi7XvmztWQXflj8Ipr53rTG9yUrM">https://api.pandascore.co/lol/items?token=1kh6pyhk3I2w4ulvwCHu3Bnvi7XvmztWQXflj8Ipr53rTG9yUrM</a></li>
+    </ul>
+
+
+    <h2>Especificaciones de las integraciones</h2>
+    <p>
+      Para la integración con la API Externa se ha usado la librería request. Con ella accedo a la información de la base de datos de campeones y más concretamente a la información de sus estadisticas, que luego utilizare para mostrar en un grafico el numero de campeones en cada
+dificultad.
+
+Para la API del proxy hago una petición y obtengo un listado de los hechizos disponibles en el juego y  muestro el valor de este con el icono correspondiente del hechizo
+    </p>
+
+    <h2>Acceso a los tests de Postman</h2>
+    <p>
+        Link a los tests de Postman:
+        <a href="https://documenter.getpostman.com/view/27553404/2s946eAYw4">https://documenter.getpostman.com/view/27553404/2s946eAYw4</a>
+    </p>
+</body>
+</html>

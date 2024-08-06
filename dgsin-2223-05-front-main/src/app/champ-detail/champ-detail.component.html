@@ -1,0 +1,110 @@
+
+
+<h1 style="text-align: center;">Updating {{champ.Name}}</h1>
+
+<div *ngIf="isAlert" [class]="alertClass" role="alert">
+
+  {{alertMessage}}
+</div>
+
+<div class="container">
+
+  <div class="banner">
+    <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{champ.Name}}_0.jpg" alt="Banner" onerror="this.src='assets/image.jpg'">
+  </div>
+  
+
+  <form class="form-container">
+
+
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" name="name" [(ngModel)]="champ.Name"  value="{{champ.Name}}" readonly >
+    </div>
+
+
+
+  
+
+    <div class="form-group">
+      <label for="role">Role:</label>
+      <input type="text" class="form-control" id="role" name="role" [(ngModel)]="champ.Role"  value="{{champ.Role}}" readonly>
+    </div>
+
+    <div class="form-group">
+      <label for="class">Class:</label>
+      <select class="form-control" id="class" [(ngModel)]="champ.Class" name="Class" value="{{champ.Class}}">
+        <option value="Fighter">Fighter</option>
+        <option value="Assassin">Assassin</option>
+        <option value="Mage">Mage</option>
+        <option value="Marksman">Marksman</option>
+        <option value="Support">Support</option>
+        <option value="Tank">Tank</option>
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <label for="tier">Tier:</label>
+
+      <select class="form-control" id="tier" [(ngModel)]="champ.Tier" name="Tier" value="{{champ.Tier}}">
+        <option value="S">S</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+        <option value="D">D</option>
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <label for="score">Score:</label>
+      <input type="number" class="form-control" id="score" name="score" [(ngModel)]="champ.Score">
+    </div>
+
+    <div class="form-group">
+      <label for="trend">Trend:</label>
+      <input type="number" class="form-control" id="trend" name="trend" [(ngModel)]="champ.Trend">
+    </div>
+
+    <div class="form-group">
+      <label for="winPercentage">Win %:</label>
+      <input type="number" class="form-control" id="winPercentage" name="winPercentage" [(ngModel)]="champ['WinP']">
+    </div>
+
+    <div class="form-group">
+      <label for="rolePercentage">Role %:</label>
+      <input type="number" class="form-control" id="rolePercentage" name="rolePercentage" [(ngModel)]="champ['RoleP']">
+    </div>
+
+    <div class="form-group">
+      <label for="pickPercentage">Pick %:</label>
+      <input type="number" class="form-control" id="pickPercentage" name="pickPercentage" [(ngModel)]="champ['PickP']" >
+    </div>
+
+    <div class="form-group">
+      <label for="banPercentage">Ban %</label>
+      <input type="number" class="form-control" id="banPercentage" name="banPercentage" [(ngModel)]="champ['BanP']">
+    </div>
+
+    <div class="form-group">
+      <label for="kda">KDA</label>
+      <input type="number" class="form-control" id="kda" name="kda" [(ngModel)]="champ.KDA">
+    </div>
+
+    <br>
+
+
+    <br>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary btn-lg" (click)="saveChamp()">Save</button>
+      &nbsp;
+      <button type="button" class="btn btn-secondary btn-lg" (click)="goBack()">Return/Cancel</button>
+    </div>
+  </form>
+  
+
+
+  
+</div>
+
